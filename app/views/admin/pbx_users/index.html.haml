@@ -22,10 +22,10 @@
       %td= pbx_user.dialable_username
       %td= pbx_user.sysadmin_user_id
       %td= pbx_user.sysadmin_login_enabled
-      %td= link_to 'Show', pbx_user
-      %td= link_to 'Edit', edit_pbx_user_path(pbx_user)
-      %td= link_to 'Destroy', pbx_user, :method => :delete, :data => { :confirm => 'Are you sure?' }
+      %td= link_to 'Show', admin_pbx_users_path(pbx_user)
+      %td= link_to 'Edit', edit_admin_pbx_user_path(pbx_user)
+      %td= link_to 'Destroy', admin_pbx_user_path(pbx_user), :method => :delete, :data => { :confirm => 'Are you sure?' }
 
 %br
 
-= link_to 'New Pbx user', new_pbx_user_path
+= link_to 'New Pbx user', new_admin_pbx_user_path

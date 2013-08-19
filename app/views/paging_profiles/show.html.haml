@@ -1,0 +1,15 @@
+%p#notice= notice
+
+%p
+  %b Name:
+  = @paging_profile.name
+%p
+  %b Off hook paging interrupt:
+  = @paging_profile.off_hook_paging_interrupt
+%p
+  %b Paging realm:
+  = @paging_profile.paging_realm
+
+= link_to 'Edit', edit_paging_profile_path(@paging_profile)
+\|
+= link_to 'Back', paging_profiles_path

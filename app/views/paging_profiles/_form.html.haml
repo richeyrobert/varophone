@@ -1,0 +1,19 @@
+= form_for @paging_profile do |f|
+  - if @paging_profile.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@paging_profile.errors.count, "error")} prohibited this paging_profile from being saved:"
+      %ul
+        - @paging_profile.errors.full_messages.each do |msg|
+          %li= msg
+
+  .field
+    = f.label :name
+    = f.text_field :name
+  .field
+    = f.label :off_hook_paging_interrupt
+    = f.check_box :off_hook_paging_interrupt
+  .field
+    = f.label :paging_realm
+    = f.text_field :paging_realm
+  .actions
+    = f.submit 'Save'

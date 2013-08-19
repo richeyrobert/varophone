@@ -27,6 +27,7 @@ class Admin::DevicesController < AdminController
   # GET /devices/new.json
   def new
     @device = Device.new
+    @users_for_select = @pbx.pbx_users.all
 
     respond_to do |format|
       format.html # new.html.erb
@@ -46,7 +47,7 @@ class Admin::DevicesController < AdminController
 
     respond_to do |format|
       if @device.save
-        format.html { redirect_to @device, notice: 'Device was successfully created.' }
+        format.html { redirect_to [:admin, @device], notice: 'Device was successfully created.' }
         format.json { render json: @device, status: :created, location: @device }
       else
         format.html { render action: "new" }

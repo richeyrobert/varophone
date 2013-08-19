@@ -1,0 +1,23 @@
+%h1 Listing paging_profiles
+
+%table
+  %tr
+    %th Name
+    %th Off hook paging interrupt
+    %th Paging realm
+    %th
+    %th
+    %th
+
+  - @paging_profiles.each do |paging_profile|
+    %tr
+      %td= paging_profile.name
+      %td= paging_profile.off_hook_paging_interrupt
+      %td= paging_profile.paging_realm
+      %td= link_to 'Show', paging_profile
+      %td= link_to 'Edit', edit_paging_profile_path(paging_profile)
+      %td= link_to 'Destroy', paging_profile, :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+%br
+
+= link_to 'New Paging profile', new_paging_profile_path

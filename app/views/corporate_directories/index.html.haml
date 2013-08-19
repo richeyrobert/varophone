@@ -1,0 +1,19 @@
+%h1 Listing corporate_directories
+
+%table
+  %tr
+    %th Name
+    %th
+    %th
+    %th
+
+  - @corporate_directories.each do |corporate_directory|
+    %tr
+      %td= corporate_directory.name
+      %td= link_to 'Show', corporate_directory
+      %td= link_to 'Edit', edit_corporate_directory_path(corporate_directory)
+      %td= link_to 'Destroy', corporate_directory, :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+%br
+
+= link_to 'New Corporate directory', new_corporate_directory_path

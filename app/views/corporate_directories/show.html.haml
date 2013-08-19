@@ -1,0 +1,9 @@
+%p#notice= notice
+
+%p
+  %b Name:
+  = @corporate_directory.name
+
+= link_to 'Edit', edit_corporate_directory_path(@corporate_directory)
+\|
+= link_to 'Back', corporate_directories_path

@@ -24,10 +24,10 @@
       %td= phone_number.call_endpoint
       %td= phone_number.hold_music_id
       %td= phone_number.call_recording_location
-      %td= link_to 'Show', phone_number
-      %td= link_to 'Edit', edit_phone_number_path(phone_number)
-      %td= link_to 'Destroy', phone_number, :method => :delete, :data => { :confirm => 'Are you sure?' }
+      %td= link_to 'Show', admin_phone_number_path(phone_number)
+      %td= link_to 'Edit', edit_admin_phone_number_path(phone_number)
+      %td= link_to 'Destroy', admin_phone_number_path(phone_number), :method => :delete, :data => { :confirm => 'Are you sure?' }
 
 %br
 
-= link_to 'New Phone number', new_phone_number_path
+= link_to 'New Phone number', new_admin_phone_number_path

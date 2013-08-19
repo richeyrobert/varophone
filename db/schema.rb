@@ -11,13 +11,19 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130814202951) do
+ActiveRecord::Schema.define(:version => 20130819200334) do
+
+  create_table "corporate_directories", :force => true do |t|
+    t.string   "name"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
 
   create_table "devices", :force => true do |t|
     t.integer  "assigned_user_id"
     t.string   "name"
     t.string   "station_label"
-    t.integer  "time_zone_id"
+    t.string   "time_zone"
     t.integer  "paging_profile_id"
     t.integer  "corporate_directory_id"
     t.boolean  "allow_provision_retrieval"
@@ -33,7 +39,15 @@ ActiveRecord::Schema.define(:version => 20130814202951) do
   add_index "devices", ["assigned_user_id"], :name => "index_devices_on_assigned_user_id"
   add_index "devices", ["corporate_directory_id"], :name => "index_devices_on_corporate_directory_id"
   add_index "devices", ["paging_profile_id"], :name => "index_devices_on_paging_profile_id"
-  add_index "devices", ["time_zone_id"], :name => "index_devices_on_time_zone_id"
+  add_index "devices", ["time_zone"], :name => "index_devices_on_time_zone_id"
+
+  create_table "paging_profiles", :force => true do |t|
+    t.string   "name"
+    t.boolean  "off_hook_paging_interrupt"
+    t.string   "paging_realm"
+    t.datetime "created_at",                :null => false
+    t.datetime "updated_at",                :null => false
+  end
 
   create_table "pbx_user_groups", :force => true do |t|
     t.integer  "pbx_id"

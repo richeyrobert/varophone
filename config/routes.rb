@@ -1,5 +1,11 @@
 Varophone::Application.routes.draw do
 
+  resources :corporate_directories
+
+
+  resources :paging_profiles
+
+
   authenticated :user do
     namespace :admin do
       resources :users

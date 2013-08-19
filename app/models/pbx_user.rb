@@ -4,4 +4,8 @@ class PbxUser < ActiveRecord::Base
   has_and_belongs_to_many :pbx_user_groups
 
   attr_accessible :dialable_username, :email, :first_name, :last_name, :sysadmin_login_enabled
+
+  def full_name
+    "#{first_name} #{last_name}"
+  end
 end

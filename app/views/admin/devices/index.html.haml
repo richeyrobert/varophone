@@ -32,9 +32,9 @@
       %td= device.last_provisioned_time
       %td= device.last_provisioned_from
       %td= device.allow_device_to_monitor
-      %td= link_to 'Show', device
+      %td= link_to 'Show', [:admin, device]
       %td= link_to 'Edit', edit_admin_device_path(device)
-      %td= link_to 'Destroy', device, :method => :delete, :data => { :confirm => 'Are you sure?' }
+      %td= link_to 'Destroy', admin_devices_path(device), :method => :delete, :data => { :confirm => 'Are you sure?' }
 
 %br
 
