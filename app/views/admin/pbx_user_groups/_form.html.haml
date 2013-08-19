@@ -1,0 +1,43 @@
+= form_for @pbx_user_group do |f|
+  - if @pbx_user_group.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@pbx_user_group.errors.count, "error")} prohibited this pbx_user_group from being saved:"
+      %ul
+        - @pbx_user_group.errors.full_messages.each do |msg|
+          %li= msg
+
+  .field
+    = f.label :pbx
+    = f.text_field :pbx
+  .field
+    = f.label :name
+    = f.text_field :name
+  .field
+    = f.label :internal_access
+    = f.check_box :internal_access
+  .field
+    = f.label :local_access
+    = f.check_box :local_access
+  .field
+    = f.label :domestic_long_distance_access
+    = f.check_box :domestic_long_distance_access
+  .field
+    = f.label :international_access
+    = f.check_box :international_access
+  .field
+    = f.label :toll_numbers_access
+    = f.check_box :toll_numbers_access
+  .field
+    = f.label :malicious_area_codes_access
+    = f.check_box :malicious_area_codes_access
+  .field
+    = f.label :super_access
+    = f.check_box :super_access
+  .field
+    = f.label :eavesdropping_access
+    = f.check_box :eavesdropping_access
+  .field
+    = f.label :prompt_recording_access
+    = f.check_box :prompt_recording_access
+  .actions
+    = f.submit 'Save'

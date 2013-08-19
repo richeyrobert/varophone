@@ -1,0 +1,13 @@
+= form_for [:super_admin, @pbx] do |f|
+  - if @pbx.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@pbx.errors.count, "error")} prohibited this pbx from being saved:"
+      %ul
+        - @pbx.errors.full_messages.each do |msg|
+          %li= msg
+
+  .field
+    = f.label :name
+    = f.text_field :name
+  .actions
+    = f.submit 'Save'

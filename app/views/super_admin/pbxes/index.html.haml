@@ -1,0 +1,19 @@
+%h1 Listing pbxes
+
+%table
+  %tr
+    %th Name
+    %th
+    %th
+    %th
+
+  - @pbxes.each do |pbx|
+    %tr
+      %td= pbx.name
+      %td= link_to 'Show', [:super_admin, pbx]
+      %td= link_to 'Edit', edit_super_admin_pbx_path(pbx)
+      %td= link_to 'Destroy', [:super_admin, pbx], :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+%br
+
+= link_to 'New Pbx', new_super_admin_pbx_path

@@ -1,0 +1,33 @@
+%h1 Listing phone_numbers
+
+%table
+  %tr
+    %th Name
+    %th Number
+    %th Caller
+    %th Block caller
+    %th Phone number type
+    %th Call endpoint
+    %th Hold music
+    %th Call recording location
+    %th
+    %th
+    %th
+
+  - @phone_numbers.each do |phone_number|
+    %tr
+      %td= phone_number.name
+      %td= phone_number.number
+      %td= phone_number.caller_id
+      %td= phone_number.block_caller_id
+      %td= phone_number.phone_number_type
+      %td= phone_number.call_endpoint
+      %td= phone_number.hold_music_id
+      %td= phone_number.call_recording_location
+      %td= link_to 'Show', phone_number
+      %td= link_to 'Edit', edit_phone_number_path(phone_number)
+      %td= link_to 'Destroy', phone_number, :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+%br
+
+= link_to 'New Phone number', new_phone_number_path

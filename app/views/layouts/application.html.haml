@@ -17,9 +17,20 @@
       .container
         .content
           .row
+            = render 'layouts/messages'
             .span12
-              = render 'layouts/messages'
-              = yield
+              - if content_for?(:sidebar)
+                .span3
+                  .row
+                    %br
+                    %br
+                    %br
+                    %br
+                  = yield(:sidebar)
+                .span8 
+                  = yield
+              - else
+                =yield
           %footer
       / ! end of .container
     / ! end of #main

@@ -1,0 +1,30 @@
+%p#notice= notice
+
+%p
+  %b Name:
+  = @phone_number.name
+%p
+  %b Number:
+  = @phone_number.number
+%p
+  %b Caller:
+  = @phone_number.caller_id
+%p
+  %b Block caller:
+  = @phone_number.block_caller_id
+%p
+  %b Phone number type:
+  = @phone_number.phone_number_type
+%p
+  %b Call endpoint:
+  = @phone_number.call_endpoint
+%p
+  %b Hold music:
+  = @phone_number.hold_music_id
+%p
+  %b Call recording location:
+  = @phone_number.call_recording_location
+
+= link_to 'Edit', edit_phone_number_path(@phone_number)
+\|
+= link_to 'Back', phone_numbers_path

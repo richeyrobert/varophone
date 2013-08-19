@@ -1,0 +1,46 @@
+= form_for @device do |f|
+  - if @device.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@device.errors.count, "error")} prohibited this device from being saved:"
+      %ul
+        - @device.errors.full_messages.each do |msg|
+          %li= msg
+
+  .field
+    = f.label :assigned_user
+    = f.text_field :assigned_user
+  .field
+    = f.label :name
+    = f.text_field :name
+  .field
+    = f.label :station_label
+    = f.text_field :station_label
+  .field
+    = f.label :time_zone
+    = f.text_field :time_zone
+  .field
+    = f.label :paging_profile
+    = f.text_field :paging_profile
+  .field
+    = f.label :corporate_directory
+    = f.text_field :corporate_directory
+  .field
+    = f.label :allow_provision_retrieval
+    = f.check_box :allow_provision_retrieval
+  .field
+    = f.label :device_type
+    = f.text_field :device_type
+  .field
+    = f.label :device_mac_address
+    = f.text_field :device_mac_address
+  .field
+    = f.label :last_provisioned_time
+    = f.datetime_select :last_provisioned_time
+  .field
+    = f.label :last_provisioned_from
+    = f.text_field :last_provisioned_from
+  .field
+    = f.label :allow_device_to_monitor
+    = f.check_box :allow_device_to_monitor
+  .actions
+    = f.submit 'Save'

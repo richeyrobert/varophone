@@ -1,0 +1,39 @@
+%p#notice= notice
+
+%p
+  %b Pbx:
+  = @pbx_user_group.pbx
+%p
+  %b Name:
+  = @pbx_user_group.name
+%p
+  %b Internal access:
+  = @pbx_user_group.internal_access
+%p
+  %b Local access:
+  = @pbx_user_group.local_access
+%p
+  %b Domestic long distance access:
+  = @pbx_user_group.domestic_long_distance_access
+%p
+  %b International access:
+  = @pbx_user_group.international_access
+%p
+  %b Toll numbers access:
+  = @pbx_user_group.toll_numbers_access
+%p
+  %b Malicious area codes access:
+  = @pbx_user_group.malicious_area_codes_access
+%p
+  %b Super access:
+  = @pbx_user_group.super_access
+%p
+  %b Eavesdropping access:
+  = @pbx_user_group.eavesdropping_access
+%p
+  %b Prompt recording access:
+  = @pbx_user_group.prompt_recording_access
+
+= link_to 'Edit', edit_pbx_user_group_path(@pbx_user_group)
+\|
+= link_to 'Back', pbx_user_groups_path

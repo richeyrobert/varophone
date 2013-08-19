@@ -1,0 +1,31 @@
+= form_for @pbx_user do |f|
+  - if @pbx_user.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@pbx_user.errors.count, "error")} prohibited this pbx_user from being saved:"
+      %ul
+        - @pbx_user.errors.full_messages.each do |msg|
+          %li= msg
+
+  .field
+    = f.label :pbx_id
+    = f.text_field :pbx_id
+  .field
+    = f.label :first_name
+    = f.text_field :first_name
+  .field
+    = f.label :last_name
+    = f.text_field :last_name
+  .field
+    = f.label :email
+    = f.text_field :email
+  .field
+    = f.label :dialable_username
+    = f.text_field :dialable_username
+  .field
+    = f.label :sysadmin_user_id
+    = f.text_field :sysadmin_user_id
+  .field
+    = f.label :sysadmin_login_enabled
+    = f.check_box :sysadmin_login_enabled
+  .actions
+    = f.submit 'Save'

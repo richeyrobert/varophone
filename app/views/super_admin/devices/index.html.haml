@@ -1,0 +1,41 @@
+%h1 Listing devices
+
+%table
+  %tr
+    %th Assigned user
+    %th Name
+    %th Station label
+    %th Time zone
+    %th Paging profile
+    %th Corporate directory
+    %th Allow provision retrieval
+    %th Device type
+    %th Device mac address
+    %th Last provisioned time
+    %th Last provisioned from
+    %th Allow device to monitor
+    %th
+    %th
+    %th
+
+  - @devices.each do |device|
+    %tr
+      %td= device.assigned_user
+      %td= device.name
+      %td= device.station_label
+      %td= device.time_zone
+      %td= device.paging_profile
+      %td= device.corporate_directory
+      %td= device.allow_provision_retrieval
+      %td= device.device_type
+      %td= device.device_mac_address
+      %td= device.last_provisioned_time
+      %td= device.last_provisioned_from
+      %td= device.allow_device_to_monitor
+      %td= link_to 'Show', device
+      %td= link_to 'Edit', edit_device_path(device)
+      %td= link_to 'Destroy', device, :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+%br
+
+= link_to 'New Device', new_device_path

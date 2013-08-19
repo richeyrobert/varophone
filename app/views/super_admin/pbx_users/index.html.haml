@@ -1,0 +1,31 @@
+%h1 Listing pbx_users
+
+%table
+  %tr
+    %th Pbx
+    %th First name
+    %th Last name
+    %th Email
+    %th Dialable username
+    %th Sysadmin user
+    %th Sysadmin login enabled
+    %th
+    %th
+    %th
+
+  - @pbx_users.each do |pbx_user|
+    %tr
+      %td= pbx_user.pbx_id
+      %td= pbx_user.first_name
+      %td= pbx_user.last_name
+      %td= pbx_user.email
+      %td= pbx_user.dialable_username
+      %td= pbx_user.sysadmin_user_id
+      %td= pbx_user.sysadmin_login_enabled
+      %td= link_to 'Show', pbx_user
+      %td= link_to 'Edit', edit_pbx_user_path(pbx_user)
+      %td= link_to 'Destroy', pbx_user, :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+%br
+
+= link_to 'New Pbx user', new_pbx_user_path

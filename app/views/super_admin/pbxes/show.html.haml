@@ -1,0 +1,9 @@
+%p#notice= notice
+
+%p
+  %b Name:
+  = @pbx.name
+
+= link_to 'Edit', edit_super_admin_pbx_path(@pbx)
+\|
+= link_to 'Back', super_admin_pbxes_path

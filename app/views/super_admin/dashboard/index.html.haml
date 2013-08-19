@@ -1,0 +1,17 @@
+%h1 Dashboard#index
+%p Find me in app/views/dashboard/index.html.haml
+
+%P This is a listing of all the PBX's over which you have control.
+
+%table 
+  %tr
+    %th Pbx Name
+    %th Manage
+    %th Edit
+  - @pbxes.each do |pbx|
+    %tr
+      %td= pbx.name
+      = form_tag admin_dashboard_path do
+        = hidden_field_tag :pbx_id, pbx.id
+        %td= submit_tag "Manage PBX", class: "btn btn-primary"
+      %td= link_to "Edit PBX", edit_super_admin_pbx_path(pbx), method: :post

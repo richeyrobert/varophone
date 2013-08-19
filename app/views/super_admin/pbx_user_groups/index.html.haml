@@ -1,0 +1,39 @@
+%h1 Listing pbx_user_groups
+
+%table
+  %tr
+    %th Pbx
+    %th Name
+    %th Internal access
+    %th Local access
+    %th Domestic long distance access
+    %th International access
+    %th Toll numbers access
+    %th Malicious area codes access
+    %th Super access
+    %th Eavesdropping access
+    %th Prompt recording access
+    %th
+    %th
+    %th
+
+  - @pbx_user_groups.each do |pbx_user_group|
+    %tr
+      %td= pbx_user_group.pbx
+      %td= pbx_user_group.name
+      %td= pbx_user_group.internal_access
+      %td= pbx_user_group.local_access
+      %td= pbx_user_group.domestic_long_distance_access
+      %td= pbx_user_group.international_access
+      %td= pbx_user_group.toll_numbers_access
+      %td= pbx_user_group.malicious_area_codes_access
+      %td= pbx_user_group.super_access
+      %td= pbx_user_group.eavesdropping_access
+      %td= pbx_user_group.prompt_recording_access
+      %td= link_to 'Show', pbx_user_group
+      %td= link_to 'Edit', edit_pbx_user_group_path(pbx_user_group)
+      %td= link_to 'Destroy', pbx_user_group, :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+%br
+
+= link_to 'New Pbx user group', new_pbx_user_group_path

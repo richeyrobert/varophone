@@ -1,0 +1,42 @@
+%p#notice= notice
+
+%p
+  %b Assigned user:
+  = @device.assigned_user
+%p
+  %b Name:
+  = @device.name
+%p
+  %b Station label:
+  = @device.station_label
+%p
+  %b Time zone:
+  = @device.time_zone
+%p
+  %b Paging profile:
+  = @device.paging_profile
+%p
+  %b Corporate directory:
+  = @device.corporate_directory
+%p
+  %b Allow provision retrieval:
+  = @device.allow_provision_retrieval
+%p
+  %b Device type:
+  = @device.device_type
+%p
+  %b Device mac address:
+  = @device.device_mac_address
+%p
+  %b Last provisioned time:
+  = @device.last_provisioned_time
+%p
+  %b Last provisioned from:
+  = @device.last_provisioned_from
+%p
+  %b Allow device to monitor:
+  = @device.allow_device_to_monitor
+
+= link_to 'Edit', edit_device_path(@device)
+\|
+= link_to 'Back', devices_path
