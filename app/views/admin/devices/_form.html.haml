@@ -19,11 +19,11 @@
     = f.label :time_zone
     = f.time_zone_select :time_zone
   .field
-    = f.label "Ignore paging profile for now" #:paging_profile
-    / = f.text_field :paging_profile
+    = f.label :paging_profile
+    %em Ignore paging profile for now
   .field
-    = f.label "Ignore corporate_directory for now" #:corporate_directory
-    / = f.text_field :corporate_directory
+    = f.label :corporate_directory
+    %em Ignore corporate_directory for now
   .field
     = f.label :allow_provision_retrieval
     = f.check_box :allow_provision_retrieval

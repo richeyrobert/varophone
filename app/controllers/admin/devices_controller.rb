@@ -4,7 +4,7 @@ class Admin::DevicesController < AdminController
   # GET /devices.json
   def index
     @devices = Device.all
-    @users = 
+    @users_for_select = @pbx.pbx_users.all
 
     respond_to do |format|
       format.html # index.html.erb
@@ -38,6 +38,7 @@ class Admin::DevicesController < AdminController
   # GET /devices/1/edit
   def edit
     @device = Device.find(params[:id])
+    @users_for_select = @pbx.pbx_users.all
   end
 
   # POST /devices

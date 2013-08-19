@@ -20,7 +20,7 @@
 
   - @devices.each do |device|
     %tr
-      %td= device.assigned_user
+      %td= device.assigned_user.full_name
       %td= device.name
       %td= device.station_label
       %td= device.time_zone
