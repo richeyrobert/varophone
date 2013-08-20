@@ -1,0 +1,130 @@
+=render "layouts/phone_admin_sidebar"
+%h1 Listing extensions
+
+%table
+  %tr
+    %th Number
+    %th Name
+    %th Omit from directory
+    %th Call recording location
+    %th Voicemail time zone
+    %th Allow message review
+    %th Escape to operator
+    %th Send email notifications
+    %th Attach voicemail message
+    %th Delete message after send
+    %th Message email address
+    %th Say message timestamp
+    %th Say callerid
+    %th Say message duration
+    %th Outgoing message busy
+    %th Outgoing message unavailable
+    %th Outgoing message temporary
+    %th Alternate mailbox location
+    %th Voicemail box password
+    %th Hold music
+    %th Intercept incoming faxes
+    %th Fax email destination
+    %th Outbound local area code
+    %th Outbound external callerid
+    %th Dial plan xml
+    %th Intercom enable
+    %th Ring back
+    %th Extension dial plan xml
+    %th Ring timeout
+    %th Follow device forwards
+    %th Confirm pickup
+    %th Ring back
+    %th Conference password
+    %th Conference admin password
+    %th Announce new participants
+    %th Ring strategy
+    %th Pre call announcement
+    %th Report caller hold time
+    %th Connection delay
+    %th Connect timeout
+    %th Retry wait time
+    %th Wrap up time
+    %th Ring in use
+    %th Queue weight
+    %th Queue max callers
+    %th Position announcement frequency
+    %th Position announcement rounding
+    %th Periodic announcement message
+    %th Announce hold time
+    %th Allow new callers empty queue
+    %th Remove callers when queue no agents
+    %th Dial plan xml
+    %th Email to fax access code
+    %th Send as user
+    %th Email to fax success message
+    %th Receiving email destination
+    %th
+    %th
+    %th
+
+  - @extensions.each do |extension|
+    %tr
+      %td= extension.number
+      %td= extension.name
+      %td= extension.omit_from_directory
+      %td= extension.call_recording_location
+      %td= extension.voicemail_time_zone
+      %td= extension.allow_message_review
+      %td= extension.escape_to_operator
+      %td= extension.send_email_notifications
+      %td= extension.attach_voicemail_message
+      %td= extension.delete_message_after_send
+      %td= extension.message_email_address
+      %td= extension.say_message_timestamp
+      %td= extension.say_callerid
+      %td= extension.say_message_duration
+      %td= extension.outgoing_message_busy
+      %td= extension.outgoing_message_unavailable
+      %td= extension.outgoing_message_temporary
+      %td= extension.alternate_mailbox_location
+      %td= extension.voicemail_box_password
+      %td= extension.hold_music
+      %td= extension.intercept_incoming_faxes
+      %td= extension.fax_email_destination
+      %td= extension.outbound_local_area_code
+      %td= extension.outbound_external_callerid
+      %td= extension.dial_plan_xml
+      %td= extension.intercom_enable
+      %td= extension.ring_back
+      %td= extension.extension_dial_plan_xml
+      %td= extension.ring_timeout
+      %td= extension.follow_device_forwards
+      %td= extension.confirm_pickup
+      %td= extension.ring_back
+      %td= extension.conference_password
+      %td= extension.conference_admin_password
+      %td= extension.announce_new_participants
+      %td= extension.ring_strategy
+      %td= extension.pre_call_announcement
+      %td= extension.report_caller_hold_time
+      %td= extension.connection_delay
+      %td= extension.connect_timeout
+      %td= extension.retry_wait_time
+      %td= extension.wrap_up_time
+      %td= extension.ring_in_use
+      %td= extension.queue_weight
+      %td= extension.queue_max_callers
+      %td= extension.position_announcement_frequency
+      %td= extension.position_announcement_rounding
+      %td= extension.periodic_announcement_message
+      %td= extension.announce_hold_time
+      %td= extension.allow_new_callers_empty_queue
+      %td= extension.remove_callers_when_queue_no_agents
+      %td= extension.dial_plan_xml
+      %td= extension.email_to_fax_access_code
+      %td= extension.send_as_user
+      %td= extension.email_to_fax_success_message
+      %td= extension.receiving_email_destination
+      %td= link_to 'Show', [:admin, extension]
+      %td= link_to 'Edit', edit_extension_path(extension)
+      %td= link_to 'Destroy', extension, :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+%br
+
+= link_to 'New Extension', new_admin_extension_path

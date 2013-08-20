@@ -1,0 +1,3 @@
+class ExtensionSharedVoicemailBox < Extension
+
+end

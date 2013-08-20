@@ -1,0 +1,178 @@
+= form_for [:admin, @extension] do |f|
+  - if @extension.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@extension.errors.count, "error")} prohibited this extension from being saved:"
+      %ul
+        - @extension.errors.full_messages.each do |msg|
+          %li= msg
+
+  .field
+    = f.label :number
+    = f.text_field :number
+  .field
+    = f.label :name
+    = f.text_field :name
+  .field
+    = f.label :omit_from_directory
+    = f.check_box :omit_from_directory
+  .field
+    = f.label :call_recording_location
+    = f.text_field :call_recording_location
+  .field
+    = f.label :voicemail_time_zone
+    = f.text_field :voicemail_time_zone
+  .field
+    = f.label :allow_message_review
+    = f.check_box :allow_message_review
+  .field
+    = f.label :escape_to_operator
+    = f.text_field :escape_to_operator
+  .field
+    = f.label :send_email_notifications
+    = f.check_box :send_email_notifications
+  .field
+    = f.label :attach_voicemail_message
+    = f.check_box :attach_voicemail_message
+  .field
+    = f.label :delete_message_after_send
+    = f.check_box :delete_message_after_send
+  .field
+    = f.label :message_email_address
+    = f.text_field :message_email_address
+  .field
+    = f.label :say_message_timestamp
+    = f.check_box :say_message_timestamp
+  .field
+    = f.label :say_callerid
+    = f.check_box :say_callerid
+  .field
+    = f.label :say_message_duration
+    = f.number_field :say_message_duration
+  .field
+    = f.label :outgoing_message_busy
+    = f.text_field :outgoing_message_busy
+  .field
+    = f.label :outgoing_message_unavailable
+    = f.text_field :outgoing_message_unavailable
+  .field
+    = f.label :outgoing_message_temporary
+    = f.text_field :outgoing_message_temporary
+  .field
+    = f.label :alternate_mailbox_location
+    = f.text_field :alternate_mailbox_location
+  .field
+    = f.label :voicemail_box_password
+    = f.number_field :voicemail_box_password
+  .field
+    = f.label :hold_music
+    = f.text_field :hold_music
+  .field
+    = f.label :intercept_incoming_faxes
+    = f.check_box :intercept_incoming_faxes
+  .field
+    = f.label :fax_email_destination
+    = f.text_field :fax_email_destination
+  .field
+    = f.label :outbound_local_area_code
+    = f.text_field :outbound_local_area_code
+  .field
+    = f.label :outbound_external_callerid
+    = f.text_field :outbound_external_callerid
+  .field
+    = f.label :dial_plan_xml
+    = f.text_field :dial_plan_xml
+  .field
+    = f.label :intercom_enable
+    = f.check_box :intercom_enable
+  .field
+    = f.label :ring_back
+    = f.text_field :ring_back
+  .field
+    = f.label :extension_dial_plan_xml
+    = f.text_area :extension_dial_plan_xml
+  .field
+    = f.label :ring_timeout
+    = f.check_box :ring_timeout
+  .field
+    = f.label :follow_device_forwards
+    = f.check_box :follow_device_forwards
+  .field
+    = f.label :confirm_pickup
+    = f.check_box :confirm_pickup
+  .field
+    = f.label :ring_back
+    = f.text_field :ring_back
+  .field
+    = f.label :conference_password
+    = f.text_field :conference_password
+  .field
+    = f.label :conference_admin_password
+    = f.text_field :conference_admin_password
+  .field
+    = f.label :announce_new_participants
+    = f.check_box :announce_new_participants
+  .field
+    = f.label :ring_strategy
+    = f.text_field :ring_strategy
+  .field
+    = f.label :pre_call_announcement
+    = f.text_field :pre_call_announcement
+  .field
+    = f.label :report_caller_hold_time
+    = f.check_box :report_caller_hold_time
+  .field
+    = f.label :connection_delay
+    = f.number_field :connection_delay
+  .field
+    = f.label :connect_timeout
+    = f.number_field :connect_timeout
+  .field
+    = f.label :retry_wait_time
+    = f.number_field :retry_wait_time
+  .field
+    = f.label :wrap_up_time
+    = f.number_field :wrap_up_time
+  .field
+    = f.label :ring_in_use
+    = f.check_box :ring_in_use
+  .field
+    = f.label :queue_weight
+    = f.number_field :queue_weight
+  .field
+    = f.label :queue_max_callers
+    = f.number_field :queue_max_callers
+  .field
+    = f.label :position_announcement_frequency
+    = f.number_field :position_announcement_frequency
+  .field
+    = f.label :position_announcement_rounding
+    = f.number_field :position_announcement_rounding
+  .field
+    = f.label :periodic_announcement_message
+    = f.text_field :periodic_announcement_message
+  .field
+    = f.label :announce_hold_time
+    = f.text_field :announce_hold_time
+  .field
+    = f.label :allow_new_callers_empty_queue
+    = f.text_field :allow_new_callers_empty_queue
+  .field
+    = f.label :remove_callers_when_queue_no_agents
+    = f.check_box :remove_callers_when_queue_no_agents
+  .field
+    = f.label :dial_plan_xml
+    = f.text_area :dial_plan_xml
+  .field
+    = f.label :email_to_fax_access_code
+    = f.text_field :email_to_fax_access_code
+  .field
+    = f.label :send_as_user
+    = f.number_field :send_as_user
+  .field
+    = f.label :email_to_fax_success_message
+    = f.check_box :email_to_fax_success_message
+  .field
+    = f.label :receiving_email_destination
+    = f.text_field :receiving_email_destination
+  .actions
+    = f.submit 'Save'

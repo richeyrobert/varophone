@@ -1,0 +1,3 @@
+class ExtensionDialPlan < Extension
+
+end

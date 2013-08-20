@@ -1,0 +1,3 @@
+class ExtensionRingGroup < Extension
+
+end

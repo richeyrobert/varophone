@@ -1,0 +1,174 @@
+%p#notice= notice
+
+%p
+  %b Number:
+  = @extension.number
+%p
+  %b Name:
+  = @extension.name
+%p
+  %b Omit from directory:
+  = @extension.omit_from_directory
+%p
+  %b Call recording location:
+  = @extension.call_recording_location
+%p
+  %b Voicemail time zone:
+  = @extension.voicemail_time_zone
+%p
+  %b Allow message review:
+  = @extension.allow_message_review
+%p
+  %b Escape to operator:
+  = @extension.escape_to_operator
+%p
+  %b Send email notifications:
+  = @extension.send_email_notifications
+%p
+  %b Attach voicemail message:
+  = @extension.attach_voicemail_message
+%p
+  %b Delete message after send:
+  = @extension.delete_message_after_send
+%p
+  %b Message email address:
+  = @extension.message_email_address
+%p
+  %b Say message timestamp:
+  = @extension.say_message_timestamp
+%p
+  %b Say callerid:
+  = @extension.say_callerid
+%p
+  %b Say message duration:
+  = @extension.say_message_duration
+%p
+  %b Outgoing message busy:
+  = @extension.outgoing_message_busy
+%p
+  %b Outgoing message unavailable:
+  = @extension.outgoing_message_unavailable
+%p
+  %b Outgoing message temporary:
+  = @extension.outgoing_message_temporary
+%p
+  %b Alternate mailbox location:
+  = @extension.alternate_mailbox_location
+%p
+  %b Voicemail box password:
+  = @extension.voicemail_box_password
+%p
+  %b Hold music:
+  = @extension.hold_music
+%p
+  %b Intercept incoming faxes:
+  = @extension.intercept_incoming_faxes
+%p
+  %b Fax email destination:
+  = @extension.fax_email_destination
+%p
+  %b Outbound local area code:
+  = @extension.outbound_local_area_code
+%p
+  %b Outbound external callerid:
+  = @extension.outbound_external_callerid
+%p
+  %b Dial plan xml:
+  = @extension.dial_plan_xml
+%p
+  %b Intercom enable:
+  = @extension.intercom_enable
+%p
+  %b Ring back:
+  = @extension.ring_back
+%p
+  %b Extension dial plan xml:
+  = @extension.extension_dial_plan_xml
+%p
+  %b Ring timeout:
+  = @extension.ring_timeout
+%p
+  %b Follow device forwards:
+  = @extension.follow_device_forwards
+%p
+  %b Confirm pickup:
+  = @extension.confirm_pickup
+%p
+  %b Ring back:
+  = @extension.ring_back
+%p
+  %b Conference password:
+  = @extension.conference_password
+%p
+  %b Conference admin password:
+  = @extension.conference_admin_password
+%p
+  %b Announce new participants:
+  = @extension.announce_new_participants
+%p
+  %b Ring strategy:
+  = @extension.ring_strategy
+%p
+  %b Pre call announcement:
+  = @extension.pre_call_announcement
+%p
+  %b Report caller hold time:
+  = @extension.report_caller_hold_time
+%p
+  %b Connection delay:
+  = @extension.connection_delay
+%p
+  %b Connect timeout:
+  = @extension.connect_timeout
+%p
+  %b Retry wait time:
+  = @extension.retry_wait_time
+%p
+  %b Wrap up time:
+  = @extension.wrap_up_time
+%p
+  %b Ring in use:
+  = @extension.ring_in_use
+%p
+  %b Queue weight:
+  = @extension.queue_weight
+%p
+  %b Queue max callers:
+  = @extension.queue_max_callers
+%p
+  %b Position announcement frequency:
+  = @extension.position_announcement_frequency
+%p
+  %b Position announcement rounding:
+  = @extension.position_announcement_rounding
+%p
+  %b Periodic announcement message:
+  = @extension.periodic_announcement_message
+%p
+  %b Announce hold time:
+  = @extension.announce_hold_time
+%p
+  %b Allow new callers empty queue:
+  = @extension.allow_new_callers_empty_queue
+%p
+  %b Remove callers when queue no agents:
+  = @extension.remove_callers_when_queue_no_agents
+%p
+  %b Dial plan xml:
+  = @extension.dial_plan_xml
+%p
+  %b Email to fax access code:
+  = @extension.email_to_fax_access_code
+%p
+  %b Send as user:
+  = @extension.send_as_user
+%p
+  %b Email to fax success message:
+  = @extension.email_to_fax_success_message
+%p
+  %b Receiving email destination:
+  = @extension.receiving_email_destination
+
+= link_to 'Edit', edit_admin_extension_path(@extension)
+\|
+= link_to 'Back', admin_extensions_path

@@ -1,0 +1,3 @@
+class ExtensionCallQueues < Extension
+
+end

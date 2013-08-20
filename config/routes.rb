@@ -1,10 +1,5 @@
 Varophone::Application.routes.draw do
 
-  resources :corporate_directories
-
-
-  resources :paging_profiles
-
 
   authenticated :user do
     namespace :admin do
@@ -14,6 +9,9 @@ Varophone::Application.routes.draw do
       resources :phone_numbers
       resources :devices
       match :dashboard, to: "dashboard#index", as: "dashboard", via:[:get, :post]
+      resources :extensions
+      resources :corporate_directories
+      resources :paging_profiles
     end
 
     namespace :super_admin do

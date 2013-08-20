@@ -1,0 +1,3 @@
+class ExtensionConferenceRoom < Extension
+
+end

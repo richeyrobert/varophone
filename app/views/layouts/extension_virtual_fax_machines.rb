@@ -1,0 +1,3 @@
+class ExtensionVirtualFaxMachines < Extension
+
+end
