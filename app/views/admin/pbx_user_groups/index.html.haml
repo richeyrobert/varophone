@@ -1,38 +1,18 @@
 =render "layouts/phone_admin_sidebar"
 %h1 Listing pbx_user_groups
 
-%table
+%table.table-striped.table-hover.table-bordered.table-responsive
   %tr
-    %th Pbx
-    %th Name
-    %th Internal access
-    %th Local access
-    %th Domestic long distance access
-    %th International access
-    %th Toll numbers access
-    %th Malicious area codes access
-    %th Super access
-    %th Eavesdropping access
-    %th Prompt recording access
-    %th
-    %th
-    %th
+    %th 
+    %th User Group Name
+    %th Group Members
+    %th Delete User Group
 
   - @pbx_user_groups.each do |pbx_user_group|
     %tr
-      %td= pbx_user_group.pbx.id
-      %td= pbx_user_group.name
-      %td= pbx_user_group.internal_access
-      %td= pbx_user_group.local_access
-      %td= pbx_user_group.domestic_long_distance_access
-      %td= pbx_user_group.international_access
-      %td= pbx_user_group.toll_numbers_access
-      %td= pbx_user_group.malicious_area_codes_access
-      %td= pbx_user_group.super_access
-      %td= pbx_user_group.eavesdropping_access
-      %td= pbx_user_group.prompt_recording_access
-      %td= link_to 'Show', admin_pbx_user_group_path(pbx_user_group)
-      %td= link_to 'Edit', edit_admin_pbx_user_group_path(pbx_user_group)
+      %td= link_to "", edit_admin_pbx_user_group_path(pbx_user_group), class: "big-icon-group"
+      %td= link_to pbx_user_group.name, edit_admin_pbx_user_group_path(pbx_user_group)
+      %td= link_to pbx_user_group.members, edit_admin_pbx_user_group_path(pbx_user_group)
       %td= link_to 'Destroy', admin_pbx_user_group_path(pbx_user_group), :method => :delete, :data => { :confirm => 'Are you sure?' }
 
 %br

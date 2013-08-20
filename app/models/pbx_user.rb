@@ -8,4 +8,12 @@ class PbxUser < ActiveRecord::Base
   def full_name
     "#{first_name} #{last_name}"
   end
+
+  def sysadmin_yes_no
+    if sysadmin_login_enabled?
+      "Yes"
+    else
+      "No"
+    end
+  end
 end

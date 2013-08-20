@@ -1,32 +1,27 @@
 =render "layouts/phone_admin_sidebar"
-%h1 Listing pbx_users
+%h1 Pbx Users
+%h3= @pbx.name
 
-%table
+%table.table-striped.table-hover.table-bordered.table-responsive
   %tr
-    %th Pbx
-    %th First name
-    %th Last name
+    %th 
+    %th User Full Name
     %th Email
-    %th Dialable username
-    %th Sysadmin user
-    %th Sysadmin login enabled
-    %th
-    %th
-    %th
+    %th Dialable Username
+    %th System Administrator
+    %th Delete User
 
   - @pbx_users.each do |pbx_user|
     %tr
-      %td= pbx_user.pbx_id
-      %td= pbx_user.first_name
-      %td= pbx_user.last_name
-      %td= pbx_user.email
-      %td= pbx_user.dialable_username
-      %td= pbx_user.sysadmin_user_id
-      %td= pbx_user.sysadmin_login_enabled
-      %td= link_to 'Show', admin_pbx_users_path(pbx_user)
-      %td= link_to 'Edit', edit_admin_pbx_user_path(pbx_user)
+      %td= link_to "", edit_admin_pbx_user_path(pbx_user), class: "big-icon-user"
+      %td= link_to pbx_user.full_name, edit_admin_pbx_user_path(pbx_user)
+      %td= link_to pbx_user.email, edit_admin_pbx_user_path(pbx_user)
+      %td= link_to "#{pbx_user.dialable_username}", edit_admin_pbx_user_path(pbx_user)
+      %td= link_to pbx_user.sysadmin_yes_no, edit_admin_pbx_user_path(pbx_user)
       %td= link_to 'Destroy', admin_pbx_user_path(pbx_user), :method => :delete, :data => { :confirm => 'Are you sure?' }
 
 %br
 
 = link_to 'New Pbx user', new_admin_pbx_user_path
+
+

@@ -1,32 +1,20 @@
 =render "layouts/phone_admin_sidebar"
 %h1 Listing phone_numbers
 
-%table
+%table.table-striped.table-hover.table-bordered.table-responsive
   %tr
+    %th 
     %th Name
     %th Number
-    %th Caller
-    %th Block caller
-    %th Phone number type
-    %th Call endpoint
-    %th Hold music
-    %th Call recording location
-    %th
-    %th
+    %th Caller Identification
     %th
 
   - @phone_numbers.each do |phone_number|
     %tr
-      %td= phone_number.name
-      %td= phone_number.number
-      %td= phone_number.caller_id
-      %td= phone_number.block_caller_id
-      %td= phone_number.phone_number_type
-      %td= phone_number.call_endpoint
-      %td= phone_number.hold_music_id
-      %td= phone_number.call_recording_location
-      %td= link_to 'Show', admin_phone_number_path(phone_number)
-      %td= link_to 'Edit', edit_admin_phone_number_path(phone_number)
+      %td= link_to "", edit_admin_phone_number_path(phone_number), class: "big-icon-phone"
+      %td= link_to phone_number.name, edit_admin_phone_number_path(phone_number)
+      %td= link_to phone_number.number, edit_admin_phone_number_path(phone_number)
+      %td= link_to phone_number.caller_id, edit_admin_phone_number_path(phone_number)
       %td= link_to 'Destroy', admin_phone_number_path(phone_number), :method => :delete, :data => { :confirm => 'Are you sure?' }
 
 %br
