@@ -11,7 +11,7 @@
 
   - @phone_numbers.each do |phone_number|
     %tr
-      %td= link_to "", edit_admin_phone_number_path(phone_number), class: "big-icon-phone"
+      %td= link_to "", edit_admin_phone_number_path(phone_number), class: "icon-phone-alt"
       %td= link_to phone_number.name, edit_admin_phone_number_path(phone_number)
       %td= link_to phone_number.number, edit_admin_phone_number_path(phone_number)
       %td= link_to phone_number.caller_id, edit_admin_phone_number_path(phone_number)

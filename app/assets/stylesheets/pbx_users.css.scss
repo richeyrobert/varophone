@@ -1,3 +1,27 @@
 // Place all the styles related to the PbxUsers controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+a.well {
+  display: block;
+  color: #555;
+  padding: 10px;
+}
+
+a.well:hover {
+  text-decoration: none;
+}
+
+.well .well-title {
+  font-size: 14px;
+  line-height: 36px;
+  margin: -8px 0 0 0;
+  padding: 0;
+}
+
+.well .well-title i {
+  opacity: 0.7;
+}
+
+.well hr.well-divider {
+  margin: 5px -10px 5px -10px;
+}

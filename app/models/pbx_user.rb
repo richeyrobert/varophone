@@ -16,4 +16,5 @@ class PbxUser < ActiveRecord::Base
       "No"
     end
   end
+
 end

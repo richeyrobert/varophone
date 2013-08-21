@@ -13,7 +13,7 @@
 
   - @pbx_users.each do |pbx_user|
     %tr
-      %td= link_to "", edit_admin_pbx_user_path(pbx_user), class: "big-icon-user"
+      %td= link_to "", edit_admin_pbx_user_path(pbx_user), class: "icon-user"
       %td= link_to pbx_user.full_name, edit_admin_pbx_user_path(pbx_user)
       %td= link_to pbx_user.email, edit_admin_pbx_user_path(pbx_user)
       %td= link_to "#{pbx_user.dialable_username}", edit_admin_pbx_user_path(pbx_user)
@@ -23,5 +23,20 @@
 %br
 
 = link_to 'New Pbx user', new_admin_pbx_user_path
-
+%br
+- @pbx_users.each do |pbx_user|
+  .row
+    .span8
+      = link_to edit_admin_pbx_user_path(pbx_user), :class => 'well' do
+        %h3.well-title
+          %i{:class => 'icon-user'}
+          = pbx_user.full_name
+        %hr.well-divider
+        .well-content
+          = "Email: " + pbx_user.email 
+          %br
+          - if pbx_user.dialable_username.present?
+            = "Dialable User Name: " + pbx_user.dialable_username  
+          - else
+            Dialable User Name: n/a
 
