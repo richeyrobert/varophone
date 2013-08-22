@@ -1,22 +1,24 @@
 =render "layouts/phone_admin_sidebar"
-%h1 Listing phone_numbers
+%h3 Phone Numbers for:
+%h1= @pbx.name
 
-%table.table-striped.table-hover.table-bordered.table-responsive
-  %tr
-    %th 
-    %th Name
-    %th Number
-    %th Caller Identification
-    %th
+- @phone_numbers.each do |phone_number|
+  .row
+    .span8
+      - if current_user.has_role?(:super_admin) 
+        = link_to admin_phone_number_path(phone_number), :method => :delete, :data => { :confirm => 'Are you sure?' } do
+          .well-title.pull-right 
+            %i{class: 'icon-remove-2', style: "margin-top:15px;"}
 
-  - @phone_numbers.each do |phone_number|
-    %tr
-      %td= link_to "", edit_admin_phone_number_path(phone_number), class: "icon-phone-alt"
-      %td= link_to phone_number.name, edit_admin_phone_number_path(phone_number)
-      %td= link_to phone_number.number, edit_admin_phone_number_path(phone_number)
-      %td= link_to phone_number.caller_id, edit_admin_phone_number_path(phone_number)
-      %td= link_to 'Destroy', admin_phone_number_path(phone_number), :method => :delete, :data => { :confirm => 'Are you sure?' }
-
-%br
-
-= link_to 'New Phone number', new_admin_phone_number_path
+      = link_to edit_admin_phone_number_path(phone_number), :class => 'well' do
+        %h3.well-title
+          %i{:class => 'icon-phone-alt'}
+          = phone_number.name
+        %hr.well-divider
+        .well-content
+          = "Phone Number: " + phone_number.number
+          .pull-right
+            = "Action: " + "TODO: Set the action for the PBX"
+          %br
+          = "Caller Id: " + phone_number.caller_id
+= link_to 'New Phone number', new_admin_phone_number_path if current_user.has_role?(:super_admin)

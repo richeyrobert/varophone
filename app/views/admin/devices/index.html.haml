@@ -1,20 +1,25 @@
 =render "layouts/phone_admin_sidebar"
-%h1 Listing devices
+%h3 Devices for 
+%h1= @pbx.name
 
-%table.table-striped.table-hover.table-bordered.table-responsive.span8
-  %tr
-    %th 
-    %th Assigned User
-    %th Device Name
-    %th
+- @devices.each do |device|
+  .row
+    .span8
+      = link_to admin_devices_path(device), :method => :delete, :data => { :confirm => 'Are you sure?' } do
+        .well-title.pull-right 
+          %i{class: 'icon-remove-2', style: "margin-top:15px;"}
 
-  - @devices.each do |device|
-    %tr
-      %td= link_to "", edit_admin_device_path(device), class: "icon-iphone-shake"
-      %td= link_to device.assigned_user.full_name, edit_admin_device_path(device)
-      %td= link_to device.name, edit_admin_device_path(device)
-      %td= link_to 'Destroy', admin_devices_path(device), :method => :delete, :data => { :confirm => 'Are you sure?' }
-
-%br
-
+      = link_to edit_admin_device_path(device), :class => 'well' do
+        %h3.well-title
+          %i{:class => 'icon-phone-alt'}
+          = device.name
+        %hr.well-divider
+        .well-content
+          = "Assigned User: " + device.assigned_user.full_name
+          .pull-right
+            = "Device MAC: " + "TODO: Set the action for the PBX"
+          %br
+          = "Extensions: " + device.extensions.inspect
+          .pull_right
+            = "Last Provisioned:" + device.last_provisioned_time.inspect
 = link_to 'New Device', new_admin_device_path

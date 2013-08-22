@@ -1,32 +1,15 @@
 =render "layouts/phone_admin_sidebar"
-%h1 Pbx Users
-%h3= @pbx.name
+%h3 Pbx Users for:
+%h1= @pbx.name
 
-%table.table-striped.table-hover.table-bordered.table-responsive
-  %tr
-    %th 
-    %th User Full Name
-    %th Email
-    %th Dialable Username
-    %th System Administrator
-    %th Delete User
 
-  - @pbx_users.each do |pbx_user|
-    %tr
-      %td= link_to "", edit_admin_pbx_user_path(pbx_user), class: "icon-user"
-      %td= link_to pbx_user.full_name, edit_admin_pbx_user_path(pbx_user)
-      %td= link_to pbx_user.email, edit_admin_pbx_user_path(pbx_user)
-      %td= link_to "#{pbx_user.dialable_username}", edit_admin_pbx_user_path(pbx_user)
-      %td= link_to pbx_user.sysadmin_yes_no, edit_admin_pbx_user_path(pbx_user)
-      %td= link_to 'Destroy', admin_pbx_user_path(pbx_user), :method => :delete, :data => { :confirm => 'Are you sure?' }
-
-%br
-
-= link_to 'New Pbx user', new_admin_pbx_user_path
 %br
 - @pbx_users.each do |pbx_user|
   .row
     .span8
+      = link_to admin_pbx_user_path(pbx_user), :method => :delete, :data => { :confirm => 'Are you sure?' } do
+        .well-title.pull-right 
+          %i{class: 'icon-remove-2', style: "margin-top:15px;"}
       = link_to edit_admin_pbx_user_path(pbx_user), :class => 'well' do
         %h3.well-title
           %i{:class => 'icon-user'}
@@ -34,9 +17,13 @@
         %hr.well-divider
         .well-content
           = "Email: " + pbx_user.email 
+          .pull-right
+            = "System Admin:" + pbx_user.sysadmin_yes_no
           %br
           - if pbx_user.dialable_username.present?
             = "Dialable User Name: " + pbx_user.dialable_username  
           - else
             Dialable User Name: n/a
-
+          .pull-right
+            Other information
+= link_to 'New Pbx user', new_admin_pbx_user_path

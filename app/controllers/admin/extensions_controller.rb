@@ -44,7 +44,7 @@ class Admin::ExtensionsController < AdminController
 
     respond_to do |format|
       if @extension.save
-        format.html { redirect_to @extension, notice: 'Extension was successfully created.' }
+        format.html { redirect_to [:admin, @extension], notice: 'Extension was successfully created.' }
         format.json { render json: @extension, status: :created, location: @extension }
       else
         format.html { render action: "new" }
@@ -79,5 +79,40 @@ class Admin::ExtensionsController < AdminController
       format.html { redirect_to extensions_url }
       format.json { head :no_content }
     end
+  end
+
+  def extension_lines
+    @extensions = @pbx.extensions.lines
+    render 'index'
+  end
+
+  def extension_ring_groups
+    @extensions = @pbx.extensions.ring_groups
+    render 'index'
+  end
+
+  def extension_conference_rooms
+    @extensions = @pbx.extensions.conference_rooms
+    render 'index'
+  end
+
+  def extension_call_queues
+    @extensions = @pbx.extensions.call_queues
+    render 'index'
+  end
+
+  def extension_dial_plans
+    @extensions = @pbx.extensions.dial_plans
+    render 'index'
+  end
+
+  def extension_shared_voicemail_boxes
+    @extensions = @pbx.extensions.shared_voicemail_boxes
+    render 'index'
+  end
+
+  def extension_virtual_fax_machines
+    @extensions = @pbx.extensions.virtual_fax_machines
+    render 'index'
   end
 end

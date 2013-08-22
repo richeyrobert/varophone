@@ -5,10 +5,6 @@ class PbxUserGroup < ActiveRecord::Base
   attr_accessible :domestic_long_distance_access, :eavesdropping_access, :internal_access, :international_access, :local_access, :malicious_area_codes_access, :name, :prompt_recording_access, :super_access, :toll_numbers_access
 
   def members
-    users = []
-    pbx_users.each do |u|
-      users << u.full_name
-    end
-    users
+    users = pbx_users.map(&:full_name).join ", "
   end
 end

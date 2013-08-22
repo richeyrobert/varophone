@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130820000519) do
+ActiveRecord::Schema.define(:version => 20130821225514) do
 
   create_table "corporate_directories", :force => true do |t|
     t.string   "name"
@@ -40,6 +40,14 @@ ActiveRecord::Schema.define(:version => 20130820000519) do
   add_index "devices", ["corporate_directory_id"], :name => "index_devices_on_corporate_directory_id"
   add_index "devices", ["paging_profile_id"], :name => "index_devices_on_paging_profile_id"
   add_index "devices", ["time_zone"], :name => "index_devices_on_time_zone_id"
+
+  create_table "devices_extensions", :id => false, :force => true do |t|
+    t.integer "device_id"
+    t.integer "extension_id"
+  end
+
+  add_index "devices_extensions", ["device_id"], :name => "index_devices_extensions_on_device_id"
+  add_index "devices_extensions", ["extension_id"], :name => "index_devices_extensions_on_extension_id"
 
   create_table "extensions", :force => true do |t|
     t.string   "number"
@@ -99,7 +107,10 @@ ActiveRecord::Schema.define(:version => 20130820000519) do
     t.string   "type"
     t.datetime "created_at",                          :null => false
     t.datetime "updated_at",                          :null => false
+    t.integer  "pbx_id"
   end
+
+  add_index "extensions", ["pbx_id"], :name => "index_extensions_on_pbx_id"
 
   create_table "paging_profiles", :force => true do |t|
     t.string   "name"

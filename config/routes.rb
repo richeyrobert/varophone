@@ -9,6 +9,13 @@ Varophone::Application.routes.draw do
       resources :phone_numbers
       resources :devices
       match :dashboard, to: "dashboard#index", as: "dashboard", via:[:get, :post]
+      resources :extension_lines
+      resources :extension_ring_groups
+      resources :extension_conference_rooms
+      resources :extension_call_queues
+      resources :extension_dial_plans
+      resources :extension_shared_voicemail_boxes
+      resources :extension_virtual_fax_machines
       resources :extensions
       resources :corporate_directories
       resources :paging_profiles

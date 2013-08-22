@@ -1,5 +1,4 @@
 class Admin::DevicesController < AdminController
-  before_filter :set_pbx
   # GET /devices
   # GET /devices.json
   def index
@@ -87,11 +86,4 @@ class Admin::DevicesController < AdminController
 
   private
 
-  def set_pbx
-    unless session[:pbx_id].blank?
-      @pbx = Pbx.find(session[:pbx_id])
-    else 
-      @pbx = nil
-    end
-  end
 end

@@ -1,20 +1,21 @@
 =render "layouts/phone_admin_sidebar"
-%h1 Listing pbx_user_groups
+%h3 PBX User Groups for:
+%h1= @pbx.name
 
-%table.table-striped.table-hover.table-bordered.table-responsive.span8
-  %tr
-    %th 
-    %th User Group Name
-    %th Group Members
-    %th Delete User Group
+- @pbx_user_groups.each do |pbx_user_group|
+  .row
+    .span8
+      = link_to admin_pbx_user_group_path(pbx_user_group), :method => :delete, :data => { :confirm => 'Are you sure?' } do
+        .well-title.pull-right 
+          %i{class: 'icon-remove-2', style: "margin-top:15px;"}
 
-  - @pbx_user_groups.each do |pbx_user_group|
-    %tr
-      %td= link_to "", edit_admin_pbx_user_group_path(pbx_user_group), class: "icon-group"
-      %td= link_to pbx_user_group.name, edit_admin_pbx_user_group_path(pbx_user_group)
-      %td= link_to pbx_user_group.members, edit_admin_pbx_user_group_path(pbx_user_group)
-      %td= link_to 'Destroy', admin_pbx_user_group_path(pbx_user_group), :method => :delete, :data => { :confirm => 'Are you sure?' }
-
-%br
-
+      = link_to edit_admin_pbx_user_group_path(pbx_user_group), :class => 'well' do
+        %h3.well-title
+          %i{:class => 'icon-user'}
+          = pbx_user_group.name
+        %hr.well-divider
+        .well-content
+          = "Members: " + pbx_user_group.members
+          .pull-right
+            Other information
 = link_to 'New Pbx user group', new_admin_pbx_user_group_path

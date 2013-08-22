@@ -1,5 +1,4 @@
 class Admin::PbxUsersController < AdminController
-  before_filter :get_pbx
   # GET /pbx_users
   # GET /pbx_users.json
   def index
@@ -79,12 +78,6 @@ class Admin::PbxUsersController < AdminController
     respond_to do |format|
       format.html { redirect_to pbx_users_url }
       format.json { head :no_content }
-    end
-  end
-
-  def get_pbx
-    if session[:pbx_id].present?
-      @pbx = Pbx.find(session[:pbx_id])
     end
   end
 end
