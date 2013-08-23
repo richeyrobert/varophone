@@ -1,31 +1,80 @@
 = form_for [:admin, @pbx_user] do |f|
-  - if @pbx_user.errors.any?
-    #error_explanation
-      %h2= "#{pluralize(@pbx_user.errors.count, "error")} prohibited this pbx_user from being saved:"
-      %ul
-        - @pbx_user.errors.full_messages.each do |msg|
-          %li= msg
+  .form-horizontal
+    - if @pbx_user.errors.any?
+      #error_explanation
+        %h2= "#{pluralize(@pbx_user.errors.count, "error")} prohibited this pbx_user from being saved:"
+        %ul
+          - @pbx_user.errors.full_messages.each do |msg|
+            %li= msg
 
-  .field
-    = f.label :pbx_id
-    = f.text_field :pbx_id
-  .field
-    = f.label :first_name
-    = f.text_field :first_name
-  .field
-    = f.label :last_name
-    = f.text_field :last_name
-  .field
-    = f.label :email
-    = f.text_field :email
-  .field
-    = f.label :dialable_username
-    = f.text_field :dialable_username
-  .field
-    = f.label :sysadmin_user_id
-    = f.text_field :sysadmin_user_id
-  .field
-    = f.label :sysadmin_login_enabled
-    = f.check_box :sysadmin_login_enabled
-  .actions
-    = f.submit 'Save'
+    = f.hidden_field :pbx_id, value: @pbx.id
+    %ul.nav.nav-tabs
+      %li.active
+        =link_to "#general-tab", data: { toggle: 'tab' } do
+          General
+      %li
+        = link_to "#membership-tab", data: { toggle: 'tab'} do
+          Group Membership
+
+    .tab-content
+      #general-tab.tab-pane.active
+        %h6 Identity
+        .control-group
+          .control-label
+            = f.label :first_name
+          .controls
+            = f.text_field :first_name
+        .control-group
+          .control-label
+            = f.label :last_name
+          .controls
+            = f.text_field :last_name
+        .control-group
+          .control-label
+            = f.label :email
+          .controls
+            = f.text_field :email
+        .control-group
+          .control-label
+            = f.label :dialable_username
+          .controls
+            = f.text_field :dialable_username
+        .control-group
+          .control-label
+            = f.label :sysadmin_login_enabled
+          .controls
+            = f.check_box :sysadmin_login_enabled
+        .control-group
+          .control-label
+            = f.label :sysadmin_user_id
+          .controls
+            = f.text_field :sysadmin_user_id
+        
+        .controls
+          = f.submit 'Save', class: "btn btn-primary"
+
+        %hr
+        %h6 Password
+        .control-group
+          .control-label
+            = f.label :dialable_password
+          .controls
+            .input-append
+              = f.text_field :dialable_password
+              = f.submit 'Change', class: "btn btn-warning"
+        %hr
+        %h6 User Portal
+        %br
+        Coming Soon
+      #membership-tab.tab-pane
+        .well.span6
+          - if @groups.present?
+            - @groups.each do |group|
+              %ul 
+                %li= group.name
+                = link_to "Add Group", "#"
+            / TODO: Add modal to choose different User Group -
+          - else
+            = link_to "Add Group", "#"
+            / TODO: Add modal to choose different User Group - 
+

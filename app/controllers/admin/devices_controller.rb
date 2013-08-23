@@ -38,6 +38,7 @@ class Admin::DevicesController < AdminController
   def edit
     @device = Device.find(params[:id])
     @users_for_select = @pbx.pbx_users.all
+    @buttons = @device.device_buttons.all
   end
 
   # POST /devices

@@ -10,7 +10,7 @@
           .well-title.pull-right 
             %i{class: 'icon-remove-2', style: "margin-top:15px;"}
 
-      = link_to edit_admin_phone_number_path(phone_number), :class => 'well' do
+      = link_to [:admin, phone_number], :class => 'well' do
         %h3.well-title
           %i{:class => 'icon-phone-alt'}
           = phone_number.name
@@ -20,5 +20,5 @@
           .pull-right
             = "Action: " + "TODO: Set the action for the PBX"
           %br
-          = "Caller Id: " + phone_number.caller_id
+          = "Caller Id: " + phone_number.caller_identification
 = link_to 'New Phone number', new_admin_phone_number_path if current_user.has_role?(:super_admin)

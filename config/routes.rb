@@ -19,6 +19,7 @@ Varophone::Application.routes.draw do
       resources :extensions
       resources :corporate_directories
       resources :paging_profiles
+      resources :device_buttons
     end
 
     namespace :super_admin do

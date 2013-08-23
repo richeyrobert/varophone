@@ -7,16 +7,22 @@
 
 %p This would be a great place for some CDR or something:
 
-- @dashboard_boxes.in_groups_of(4, false) do |row|
-  .row
-    - row.each do |box|
-      .span3
-        = link_to box[:link], :class => 'well' do
-          %h3.well-title
-            %i{:class => box[:icon]}
-            = box[:title]
-          %hr.well-divider
-          .well-content= box[:content]
-
+.row
+  .span3
+    = link_to new_admin_pbx_user_path, :class => 'well' do
+      %h3.well-title
+        %i{:class => 'icon-user-add'}
+        Add a User
+      %hr.well-divider
+        .well-content
+          Add new users for the PBX.
+  .span3
+    = link_to new_admin_device_path, :class => 'well' do
+      %h3.well-title
+        %i{:class => 'icon-phone-alt'}
+        Add a Device
+      %hr.well-divider
+        .well-content
+          Add devices to the PBX.
 
 

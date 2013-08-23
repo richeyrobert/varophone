@@ -14,6 +14,7 @@ class Admin::PbxUserGroupsController < AdminController
   # GET /pbx_user_groups/1.json
   def show
     @pbx_user_group = PbxUserGroup.find(params[:id])
+    @members = @pbx_user_group.members
 
     respond_to do |format|
       format.html # show.html.erb
@@ -25,6 +26,7 @@ class Admin::PbxUserGroupsController < AdminController
   # GET /pbx_user_groups/new.json
   def new
     @pbx_user_group = PbxUserGroup.new
+    @members = @pbx_user_group.pbx_users
 
     respond_to do |format|
       format.html # new.html.erb
@@ -35,6 +37,7 @@ class Admin::PbxUserGroupsController < AdminController
   # GET /pbx_user_groups/1/edit
   def edit
     @pbx_user_group = PbxUserGroup.find(params[:id])
+    @members = @pbx_user_group.pbx_users
   end
 
   # POST /pbx_user_groups

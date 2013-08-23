@@ -1,6 +1,5 @@
 class Admin::DashboardController < AdminController
   def index
-    @dashboard_boxes = Dashboard.boxes_for(current_user)
     if params[:pbx_id].present?
       session[:pbx_id] = params[:pbx_id]
       @pbx = Pbx.find(params[:pbx_id])

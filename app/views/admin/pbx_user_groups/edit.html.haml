@@ -1,7 +1,8 @@
-%h1 Editing pbx_user_group
 
+%h3 Edit User Group for:
+%h1= @pbx.name
+%br
+= render 'layouts/phone_admin_sidebar'
 = render 'form'
 
-= link_to 'Show', @pbx_user_group
-\|
-= link_to 'Back', pbx_user_groups_path
+= link_to 'Back', admin_pbx_user_groups_path

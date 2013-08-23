@@ -1,5 +1,8 @@
-%h1 New pbx_user
+%h3 New PBX User for:
+%h1= @pbx.name
+%br
+= render 'layouts/phone_admin_sidebar'
 
 = render 'form'
 
-= link_to 'Back', pbx_users_path
+= link_to 'Back', admin_pbx_users_path

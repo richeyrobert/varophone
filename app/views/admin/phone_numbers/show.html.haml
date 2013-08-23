@@ -1,30 +1,62 @@
+= render 'layouts/phone_admin_sidebar'
+
+%h3 Phone Number Details for:
+%h1= @pbx.name
+
 %p#notice= notice
 
-%p
-  %b Name:
-  = @phone_number.name
-%p
-  %b Number:
-  = @phone_number.number
-%p
-  %b Caller:
-  = @phone_number.caller_id
-%p
-  %b Block caller:
-  = @phone_number.block_caller_id
-%p
-  %b Phone number type:
-  = @phone_number.phone_number_type
-%p
-  %b Call endpoint:
-  = @phone_number.call_endpoint
-%p
-  %b Hold music:
-  = @phone_number.hold_music_id
-%p
-  %b Call recording location:
-  = @phone_number.call_recording_location
+= form_for [:super_admin, @phone_number] do |f|
+  .form-horizontal
+    - if @phone_number.errors.any?
+      #error_explanation
+        %h2= "#{pluralize(@pbx_user_group.errors.count, "error")} prohibited this pbx_user_group from being saved:"
+        %ul
+          - @pbx_user_group.errors.full_messages.each do |msg|
+            %li= msg
+    .control-group
+      .control-label
+        = f.label :name
+      .controls
+        = f.text_field :name
+    .control-group
+      .control-label
+        = f.label :number
+      .controls
+        =f.text_field :number, disabled: true
+    .control-group
+      .control-label
+        = f.label :caller_identification
+      .controls
+        =f.text_field :caller_identification, disabled: true
+    .control-group
+      .control-label
+        = f.label :block_caller_id
+      .controls
+        = f.check_box :block_caller_id
+    .control-group
+      .control-label
+        = f.label :phone_number_type
+      .controls
+        = f.text_field :phone_number_type, disabled: true
+    .control-group
+      .control-label
+        = f.label :call_endpoint
+      .controls
+        = f.text_field :call_endpoint 
+        / TODO: later make this a select for all extensions
+    .control-group
+      .control-label
+        = f.label :hold_music_id
+      .controls
+        = f.text_field :hold_music_id
+    .control-group
+      .control-label 
+        = f.label :call_recording_location
+      .controls
+        = f.text_field :call_recording_location
+    .controls
+      = f.submit "Update Number", class: "btn btn-primary"
 
-= link_to 'Edit', edit_phone_number_path(@phone_number)
+= link_to 'Edit', edit_super_admin_phone_number_path(@phone_number) if current_user.has_role?(:super_admin)
 \|
-= link_to 'Back', phone_numbers_path
+= link_to 'Back', admin_phone_numbers_path

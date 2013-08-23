@@ -1,0 +1,28 @@
+= form_for [:admin, @device_button] do |f|
+  .form-horizontal
+    - if @device_button.errors.any?
+      #error_explanation
+        %h2= "#{pluralize(@device_button.errors.count, "error")} prohibited this device from being saved:"
+        %ul
+          - @device_button.errors.full_messages.each do |msg|
+            %li= msg
+    .control-group
+      .control-label
+        = f.label :button_label
+      .controls
+        = f.text_field :button_label
+    .control-group
+      .control-label
+        = f.label :extension_id
+      .controls
+        / TODO: Change the text field below to a select of the extensions
+        / = f.select
+        = f.text_field :extension_id
+    .control-group
+      .control-label
+        = f.label :display_count
+      .controls
+        = f.number_field :display_count
+    = f.hidden_field :device_id, value: @device.id
+    .controls
+      = f.submit "Save", class: "btn btn-primary"

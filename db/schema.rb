@@ -11,13 +11,25 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130821225514) do
+ActiveRecord::Schema.define(:version => 20130823175122) do
 
   create_table "corporate_directories", :force => true do |t|
     t.string   "name"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
+
+  create_table "device_buttons", :force => true do |t|
+    t.string   "button_label"
+    t.integer  "extension_id"
+    t.integer  "device_id"
+    t.integer  "display_count"
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
+  end
+
+  add_index "device_buttons", ["device_id"], :name => "index_device_buttons_on_device_id"
+  add_index "device_buttons", ["extension_id"], :name => "index_device_buttons_on_extension_id"
 
   create_table "devices", :force => true do |t|
     t.integer  "assigned_user_id"
@@ -156,6 +168,7 @@ ActiveRecord::Schema.define(:version => 20130821225514) do
     t.boolean  "sysadmin_login_enabled"
     t.datetime "created_at",             :null => false
     t.datetime "updated_at",             :null => false
+    t.string   "dialable_password"
   end
 
   add_index "pbx_users", ["pbx_id"], :name => "index_pbx_users_on_pbx_id"
@@ -179,7 +192,7 @@ ActiveRecord::Schema.define(:version => 20130821225514) do
     t.integer  "pbx_id"
     t.string   "name"
     t.string   "number"
-    t.string   "caller_id"
+    t.string   "caller_identification"
     t.boolean  "block_caller_id"
     t.string   "phone_number_type"
     t.string   "call_endpoint"

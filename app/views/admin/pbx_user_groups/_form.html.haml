@@ -1,43 +1,112 @@
-= form_for @pbx_user_group do |f|
-  - if @pbx_user_group.errors.any?
-    #error_explanation
-      %h2= "#{pluralize(@pbx_user_group.errors.count, "error")} prohibited this pbx_user_group from being saved:"
-      %ul
-        - @pbx_user_group.errors.full_messages.each do |msg|
-          %li= msg
+= form_for [:admin, @pbx_user_group] do |f|
+  .form-horizontal
+    - if @pbx_user_group.errors.any?
+      #error_explanation
+        %h2= "#{pluralize(@pbx_user_group.errors.count, "error")} prohibited this pbx_user_group from being saved:"
+        %ul
+          - @pbx_user_group.errors.full_messages.each do |msg|
+            %li= msg
 
-  .field
-    = f.label :pbx
-    = f.text_field :pbx
-  .field
-    = f.label :name
-    = f.text_field :name
-  .field
-    = f.label :internal_access
-    = f.check_box :internal_access
-  .field
-    = f.label :local_access
-    = f.check_box :local_access
-  .field
-    = f.label :domestic_long_distance_access
-    = f.check_box :domestic_long_distance_access
-  .field
-    = f.label :international_access
-    = f.check_box :international_access
-  .field
-    = f.label :toll_numbers_access
-    = f.check_box :toll_numbers_access
-  .field
-    = f.label :malicious_area_codes_access
-    = f.check_box :malicious_area_codes_access
-  .field
-    = f.label :super_access
-    = f.check_box :super_access
-  .field
-    = f.label :eavesdropping_access
-    = f.check_box :eavesdropping_access
-  .field
-    = f.label :prompt_recording_access
-    = f.check_box :prompt_recording_access
-  .actions
-    = f.submit 'Save'
+    = f.hidden_field :pbx, value: @pbx.id
+
+    %ul.nav.nav-tabs
+      %li.active
+        =link_to "#general-tab", data: { toggle: 'tab' } do
+          General
+      %li
+        = link_to "#members-tab", data: { toggle: 'tab'} do
+          Members
+    .tab-content
+      #general-tab.tab-pane.active
+        .control-group
+          .control-label
+            = f.label :name
+          .controls
+            = f.text_field :name
+        .row
+          .span4
+            .control-group
+              .control-label
+                = f.label :internal_access
+              .controls
+                = f.check_box :internal_access
+              .control-label  
+                .help-block
+                  Allows dialing of internal extensions.
+            .control-group
+              .control-label
+                = f.label :local_access
+              .controls
+                = f.check_box :local_access
+              .control-label  
+                .help-block
+                  Allows dialing of local phone numbers.
+            .control-group
+              .control-label
+                = f.label :domestic_long_distance_access
+              .controls
+                = f.check_box :domestic_long_distance_access
+              .control-label  
+                .help-block
+                  Allows domestic long distance dialing.
+            .control-group
+              .control-label
+                = f.label :international_access
+              .controls
+                = f.check_box :international_access
+              .control-label  
+                .help-block
+                  Allows dialing of international phone numbers.
+            .control-group
+              .control-label
+                = f.label :toll_numbers_access
+              .controls
+                = f.check_box :toll_numbers_access
+              .control-label  
+                .help-block
+                  Allows dialing of Toll Numbers.
+          .span4
+            .control-group
+              .control-label
+                = f.label :malicious_area_codes_access
+              .controls
+                = f.check_box :malicious_area_codes_access
+              .control-label  
+                .help-block
+                  Allows dialing to areas know to be malicious.
+            .control-group
+              .control-label
+                = f.label :super_access
+              .controls
+                = f.check_box :super_access
+              .control-label  
+                .help-block
+                  Access to modify all system params.
+            .control-group
+              .control-label
+                = f.label :eavesdropping_access
+              .controls
+                = f.check_box :eavesdropping_access
+              .control-label  
+                .help-block
+                  Allows eavesdropping on other calls. 
+            .control-group
+              .control-label
+                = f.label :prompt_recording_access
+              .controls
+                = f.check_box :prompt_recording_access
+              .control-label  
+                .help-block
+                  Allows user to record voicemail prompts for the system. 
+        .controls
+          = f.submit 'Save', class: "btn btn-primary"
+      #members-tab.tab-pane
+        %h3= @pbx_user_group.name
+        %p
+          %h6 Group Members:
+        %ul.well
+          - @members.each do |member|
+            %li= member.full_name
+          %br
+          = link_to "Add User to Group", 'add_new_member'
+          / TODO: Create modal to add user to a Group

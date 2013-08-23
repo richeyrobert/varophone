@@ -2,4 +2,118 @@
 # See https://github.com/svenfuchs/rails-i18n/tree/master/rails%2Flocale for starting points.
 
 en:
-  hello: "Hello world"
+  date:
+    formats:
+      default: "%m/%d/%Y"
+      short: "%b %d"
+      long: "%B %d, %Y"
+  time:
+    formats:
+      default: '%A %b %e %Y, %l:%M%p'
+      short: "%m/%d/%y %l:%M%p"
+      compact: "%m/%d/%Y"
+      long: "%B %d, %Y %H:%M"
+    am: "am"
+    pm: "pm"
+
+  attributes:
+    created_at: 'Created'
+    updated_at: 'Updated'
+
+  activerecord:
+
+    models:
+      pbx_user: "PBX User"
+      pbx_user_group: "PBX User Group"
+      user: "User"
+      phone_number: "Phone Number"
+      device: "Device"
+      extension: "Extension"
+      extension_line: "Line"
+      extension_ring_group: "Ring Group"
+      extension_conference_room: "Conference Room"
+      extension_call_queues: "Call Queue"
+      extension_dial_plan: "Dial Plan"
+      extension_shared_voicemail_box: "Shared Voicemail Box"
+      extension_virtual_fax_machine: "Virtual Fax Machine"
+      hold_music: "Hold Music"
+      sound_clips: "Sound Clips"
+      directory: "Directory"
+      schedule: "Schedule"
+      permission: "Permissions"
+      system_settings: "System Settings"
+    attributes:
+      pbx_user:
+        sysadmin_login_enabled: "Allow Admin Login"
+        first_name: "First Name"
+        last_name: "Last Name"
+        full_name: "Name"
+        email: "E-Mail"
+        dialable_username: "Dialable User Name"
+        sysadmin_user_id: "Admin E-Mail ID"
+        dialable_password: "Dialable Password"
+      pbx_user_group:
+        name: "Group Name"
+        internal_access: "Internal Access"
+        local_access: "Local Access"
+        domestic_long_distance_access: "Domestic L.D. Access"
+        international_access: "Intl. L.D. Access"
+        toll_numbers_access: "Toll Numbers Access"
+        malicious_area_codes_access: "Malicious Area Codes"
+        super_access: "Super Admin Access"
+        eavesdropping_access: "Can Eavesdrop"
+        prompt_recording_access: "Can Record Prompts"
+
+      user:
+
+      phone_number: 
+        name: "Name"
+        number: "Phone Number"
+        caller_identification: "Caller ID"
+        block_caller_id: "Block Caller ID"
+        phone_number_type: "Number Type"
+        call_endpoint: "Call Endpoint"
+        hold_music_id: "Hold Music"
+        call_recording_location: "Call Record Location"
+
+
+      device:
+        assigned_user: "Assigned User"
+        name: "Device Name"
+        station_label: "Station Label"
+        time_zone: "Time Zone"
+        paging_profile: "Paging Profile"
+        corporate_directory: "Directory"
+        allow_provision_retrieval: "Allow Provisioning"
+        device_type: "Device Type"
+        device_mac_address: "Device MAC Address"
+        last_provisioned_time: "Last Provisioned Time"
+        last_provisioned_from: "Last Provisioned From"
+        allow_device_to_monitor: "Allow Monitoring"
+
+      extension:
+
+      extension_line:
+
+      extension_ring_group:
+
+      extension_conference_room:
+
+      extension_call_queues:
+
+      extension_dial_plan:
+
+      extension_shared_voicemail_box:
+
+      extension_virtual_fax_machine:
+
+      hold_music:
+
+      sound_clips:
+
+      directory:
+
+      schedule:
+
+      permission:
+      system_settings:

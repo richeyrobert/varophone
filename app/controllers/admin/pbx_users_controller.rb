@@ -35,6 +35,7 @@ class Admin::PbxUsersController < AdminController
   # GET /pbx_users/1/edit
   def edit
     @pbx_user = PbxUser.find(params[:id])
+    @groups = @pbx_user.pbx_user_groups
   end
 
   # POST /pbx_users
@@ -44,7 +45,7 @@ class Admin::PbxUsersController < AdminController
 
     respond_to do |format|
       if @pbx_user.save
-        format.html { redirect_to @pbx_user, notice: 'Pbx user was successfully created.' }
+        format.html { redirect_to edit_admin_pbx_user_path(@pbx_user), notice: 'Pbx user was successfully created.' }
         format.json { render json: @pbx_user, status: :created, location: @pbx_user }
       else
         format.html { render action: "new" }
@@ -60,7 +61,7 @@ class Admin::PbxUsersController < AdminController
 
     respond_to do |format|
       if @pbx_user.update_attributes(params[:pbx_user])
-        format.html { redirect_to @pbx_user, notice: 'Pbx user was successfully updated.' }
+        format.html { redirect_to edit_admin_pbx_user_path(@pbx_user), notice: 'Pbx user was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }
@@ -76,7 +77,7 @@ class Admin::PbxUsersController < AdminController
     @pbx_user.destroy
 
     respond_to do |format|
-      format.html { redirect_to pbx_users_url }
+      format.html { redirect_to admin_pbx_users_url }
       format.json { head :no_content }
     end
   end
