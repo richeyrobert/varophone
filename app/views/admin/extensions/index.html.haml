@@ -9,7 +9,7 @@
         .well-title.pull-right 
           %i{class: 'icon-remove-2', style: "margin-top:15px;"}
 
-      = link_to edit_admin_extension_path(extension), :class => 'well' do
+      = link_to edit_link_finder(extension.type, extension), :class => 'well' do
         %h3.well-title
           %i{:class => icon_helper(extension.type)}
           = extension.name
@@ -24,4 +24,5 @@
             = "Last Provisioned: " + "what to put here?"
           %br
           = "Extension Type: " + extension.show_friendly_type
-= link_to 'New Extension', new_admin_extension_path
+= link_to "New Extension", new_link_finder(params[:action])
+

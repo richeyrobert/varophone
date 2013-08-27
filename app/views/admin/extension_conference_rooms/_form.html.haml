@@ -1,0 +1,66 @@
+= form_for [:admin, @extension_conference_room] do |f|
+  .form-horizontal
+    - if @extension_conference_room.errors.any?
+      #error_explanation
+        %h2= "#{pluralize(@extension_conference_room.errors.count, "error")} prohibited this extension from being saved:"
+        %ul
+          - @extension_conference_room.errors.full_messages.each do |msg|
+            %li= msg
+
+    %ul.nav.nav-tabs
+      %li.active
+        =link_to "#general-tab", data: { toggle: 'tab' } do
+          General
+      %li 
+        =link_to "#recording-tab", data: { toggle: 'tab' } do 
+          Recording
+
+    .tab-content
+      #general-tab.tab-pane.active
+        %h6 Extension
+        .control-group
+          .control-label 
+            = f.label :name
+          .controls
+            = f.text_field :name
+        .control-group
+          .control-label 
+            = f.label :number
+          .controls
+            = f.text_field :number
+        .control-group
+          .control-label
+            = f.label :omit_from_directory
+          .controls
+            = f.check_box :omit_from_directory
+        .controls
+          = f.submit 'Save', class: "btn btn-primary"
+
+        %h6 Options
+        .control-group
+          .control-label
+            = f.label :conference_password
+          .controls
+            = f.text_field :conference_password
+        .control-group  
+          .control-label
+            = f.label :conference_admin_password
+          .controls
+            = f.text_field :conference_admin_password
+        .control-group
+          .control-label
+            = f.label :announce_new_participants
+          .controls
+            = f.check_box :announce_new_participants
+        .controls
+        = f.submit 'Save', class: "btn btn-primary"
+
+      #recording-tab.tab-pane
+        %h6 Call Recording
+        .control-group
+          .control-label
+            = f.label :call_recording_location
+          .controls
+            = f.text_field :call_recording_location
+        .controls
+          = f.submit 'Save', class: "btn btn-primary"

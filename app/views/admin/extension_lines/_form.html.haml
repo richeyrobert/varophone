@@ -1,6 +1,6 @@
-= form_for [:admin, @extension_ring_group] do |f|
+= form_for [:admin, @extension_line] do |f|
   .form-horizontal
-    - if @extension_ring_group.errors.any?
+    - if @extension_line.errors.any?
       #error_explanation
         %h2= "#{pluralize(@extension.errors.count, "error")} prohibited this extension from being saved:"
         %ul
@@ -43,7 +43,7 @@
           .controls
             = f.check_box :omit_from_directory
 
-        %h6 Options
+        %h6 Outbound Call Options
         %br
         .control-group
           .control-label

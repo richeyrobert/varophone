@@ -2,7 +2,7 @@
   .form-horizontal
     - if @extension_ring_group.errors.any?
       #error_explanation
-        %h2= "#{pluralize(@extension.errors.count, "error")} prohibited this extension from being saved:"
+        %h2= "#{pluralize(@extension_ring_group.errors.count, "error")} prohibited this extension from being saved:"
         %ul
           - @extension.errors.full_messages.each do |msg|
             %li= msg
@@ -12,8 +12,8 @@
         =link_to "#general-tab", data: { toggle: 'tab' } do
           General
       %li 
-        =link_to "#dial-plan-tab", data: { toggle: 'tab' } do 
-          Dial Plan
+        =link_to "#members-tab", data: { toggle: 'tab' } do 
+          Members
       %li 
         =link_to "#voicemail-tab", data: { toggle: 'tab' } do 
           Voicemail
@@ -28,70 +28,63 @@
       #general-tab.tab-pane.active
         %h6 Extension
         .control-group
-          .control-label
+          .control-label 
+            = f.label :name
+          .controls
+            = f.text_field :name
+        .control-group
+          .control-label 
             = f.label :number
           .controls
             = f.text_field :number
         .control-group
           .control-label
-            = f.label :name
-          .controls
-            = f.text_field :name
-        .control-group
-          .control-label
             = f.label :omit_from_directory
           .controls
             = f.check_box :omit_from_directory
-
-        %h6 Options
-        %br
-        .control-group
-          .control-label
-            = f.label :outbound_local_area_code
-          .controls 
-            = f.text_field :outbound_local_area_code
-        .control-group
-          .control-label
-            = f.label :outbound_external_callerid
-          .controls
-            = f.text_field :outbound_external_callerid
         .controls
           = f.submit 'Save', class: "btn btn-primary"
 
-      #dial-plan-tab.tab-pane
-        .row
-          .span3
-            %h6 Dial Plan
-            = f.label :extension_dial_plan_xml
-            = f.text_area :extension_dial_plan_xml
-          .span3
-            %h6 Options
-            .control-group
-              .control-label
-                = f.label :intercom_enable
-              .controls
-                = f.check_box :intercom_enable
-            .control-group
-              .control-label
-                = f.label :hold_music
-              .controls
-                = f.text_field :hold_music
-            .control-group
-              .control-label
-                = f.label :ring_back
-              .controls
-                = f.text_field :ring_back
-            .control-group
-              .control-label
-                = f.label :intercept_incoming_faxes
-              .controls
-                = f.check_box :intercept_incoming_faxes
-            .control-group
-              .control-label
-                = f.label :fax_email_destination
-              .controls
-                = f.text_field :fax_email_destination
-            = f.submit 'Save', class: "btn btn-primary"
+        %h6 Options
+        .control-group
+          .control-label
+            = f.label :ring_timeout
+          .controls
+            = f.check_box :ring_timeout
+        .control-group
+          .control-label
+            = f.label :follow_device_forwards
+          .controls
+            = f.check_box :follow_device_forwards
+        .control-group
+          .control-label
+            = f.label :confirm_pickup
+          .controls
+            = f.check_box :confirm_pickup
+        .control-group
+          .control-label
+            = f.label :ring_back
+          .controls
+            = f.text_field :ring_back
+        .control-group
+          .control-label
+            = f.label :intercept_incoming_faxes
+          .controls
+            = f.check_box :intercept_incoming_faxes
+        .control-group
+          .control-label
+            = f.label :fax_email_destination
+          .controls
+            = f.text_field :fax_email_destination
+        .controls
+        = f.submit 'Save', class: "btn btn-primary"
+
+      #members-tab.tab-pane
+        %h6 Members
+        / Show a listing of all of the ring group members here. 
+        / Preferable in boxes like the extensions
+        .controls
+          = f.submit 'Save', class: "btn btn-primary"
 
       #voicemail-tab.tab-pane
         %h6 General Options
@@ -99,7 +92,7 @@
           .control-label
             = f.label :voicemail_time_zone
           .controls
-            = f.text_field  :voicemail_time_zone
+            = f.text_field :voicemail_time_zone
         .control-group
           .control-label
             = f.label :allow_message_review
@@ -110,6 +103,8 @@
             = f.label :escape_to_operator
           .controls
             = f.text_field :escape_to_operator
+        .controls
+          = f.submit 'Save', class: "btn btn-primary"
 
         %h6 Notification Options
         .control-group
@@ -132,6 +127,9 @@
             = f.label :message_email_address
           .controls
             = f.text_field :message_email_address
+        .controls
+          = f.submit 'Save', class: "btn btn-primary"
+
         %h6 Message Retrieval Options
         .control-group
           .control-label
@@ -148,11 +146,8 @@
             = f.label :say_message_duration
           .controls
             = f.number_field :say_message_duration
-        .control-group
-          .control-label
-            = f.label :call_recording_location
-          .controls
-            = f.text_field :call_recording_location
+        .controls
+          = f.submit 'Save', class: "btn btn-primary"
 
         %h6 Outgoing Message Options
         .control-group
@@ -170,23 +165,34 @@
             = f.label :outgoing_message_temporary
           .controls
             = f.text_field :outgoing_message_temporary
+        .controls
+          = f.submit 'Save', class: "btn btn-primary"
+
+        %h6 Alternate Mailbox
         .control-group
           .control-label
             = f.label :alternate_mailbox_location
           .controls
             = f.text_field :alternate_mailbox_location
-        = f.submit 'Save', class: "btn btn-primary"
+        .controls
+          = f.submit 'Save', class: "btn btn-primary"
 
       #voicemail-access-tab.tab-pane
+        %h6 Voicemail Box Password
         .control-group
           .control-label
             = f.label :voicemail_box_password
           .controls
             = f.number_field :voicemail_box_password
+        .controls
+          = f.submit 'Save', class: "btn btn-primary"
+
       #recording-tab.tab-pane
+        %h6 Call Recording
         .control-group
           .control-label
             = f.label :call_recording_location
           .controls
             = f.text_field :call_recording_location
-        = f.submit 'Save', class: "btn btn-primary"
+        .controls
+          = f.submit 'Save', class: "btn btn-primary"
